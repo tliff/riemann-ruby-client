@@ -204,6 +204,8 @@ module Riemann
       end
 
       @time ||= Time.now.to_i
+      @time_micros ||= (Time.now.to_f * 1000).to_i
+      
     end
 
     def metric
