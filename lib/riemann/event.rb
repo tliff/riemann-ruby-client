@@ -12,6 +12,7 @@ module Riemann
     optional :ttl, :float, 8
     repeated :attributes, Attribute, 9
 
+    optional :time_micros, :int64, 10
     optional :metric_sint64, :sint64, 13
     optional :metric_d, :double, 14
     optional :metric_f, :float, 15
@@ -56,7 +57,13 @@ module Riemann
         (times.inject(:+) / times.size).to_i
       rescue
       end
+      init.time_micros = begin
+        times = states.map(&:time_micros).compact
+        (times.inject(:+) / times.size).to_i
+      rescue
+      end
       init.time ||= Time.now.to_i
+      init.time_micros ||= (Time.now.to_f * 1000).to_i
 
       init
     end
@@ -90,8 +97,13 @@ module Riemann
         (times.inject(:+) / times.size).to_i
       rescue
       end
+      init.time_micros = begin
+        times = states.map(&:time_micros).compact
+        (times.inject(:+) / times.size).to_i
+      rescue
+      end
       init.time ||= Time.now.to_i
-
+      init.time_micros ||= (Time.now.to_f * 1000).to_i
       init
     end
 
@@ -124,8 +136,13 @@ module Riemann
         (times.inject(:+) / times.size).to_i
       rescue
       end
+      init.time_micros = begin
+        times = states.map(&:time_micros).compact
+        (times.inject(:+) / times.size).to_i
+      rescue
+      end
       init.time ||= Time.now.to_i
-
+      init.time_micros ||= (Time.now.to_f * 1000).to_i
       init
     end
 
