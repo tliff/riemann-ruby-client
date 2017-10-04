@@ -63,7 +63,7 @@ module Riemann
       rescue
       end
       init.time ||= Time.now.to_i
-      init.time_micros ||= (Time.now.to_f * 1000).to_i
+      init.time_micros ||= (Time.now.to_f * 1_000_000).to_i
 
       init
     end
@@ -103,7 +103,7 @@ module Riemann
       rescue
       end
       init.time ||= Time.now.to_i
-      init.time_micros ||= (Time.now.to_f * 1000).to_i
+      init.time_micros ||= (Time.now.to_f * 1_000_000).to_i
       init
     end
 
@@ -142,7 +142,7 @@ module Riemann
       rescue
       end
       init.time ||= Time.now.to_i
-      init.time_micros ||= (Time.now.to_f * 1000).to_i
+      init.time_micros ||= (Time.now.to_f * 1_000_000).to_i
       init
     end
 
@@ -204,7 +204,7 @@ module Riemann
       end
 
       @time ||= Time.now.to_i
-      @time_micros ||= (Time.now.to_f * 1000).to_i
+      @time_micros ||= (Time.now.to_f * 1_000_000).to_i
       
     end
 
